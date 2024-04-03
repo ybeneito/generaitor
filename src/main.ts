@@ -7,7 +7,8 @@ let value = ""
 copyBtn.addEventListener("click", (e) => {
   e.preventDefault()
   navigator.clipboard.writeText(value)
-  alert("Copied to clipboard")
+  copyBtn.classList.add("hidden")
+  alert("Copié dans le presse papier")
 })
 
 form.addEventListener("submit", async (e) => {
