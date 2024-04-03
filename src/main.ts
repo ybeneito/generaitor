@@ -6,7 +6,7 @@ form.addEventListener("submit", async (e) => {
     const formData = new FormData(form);
     const prompt = formData.get("prompt") as string;
 
-    const response = await fetch(import.meta.env.VITE_api,
+    const response = await fetch("https://generaitor-api.vercel.app/ai",
       {
         headers: {
           "Content-Type": "application/json"
