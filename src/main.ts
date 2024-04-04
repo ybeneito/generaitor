@@ -2,8 +2,25 @@ const form = document.querySelector("#generate-form") as HTMLFormElement;
 const generated = document.querySelector("#generated") as HTMLIFrameElement;
 const copyBtn = document.querySelector("#copy-btn") as HTMLButtonElement;
 
-let value = ""
+// Affichage de base afin de rester sur une unique page, celui ci est inseré dans l'Iframe
+generated.srcdoc = `
+<head>
+  <meta charset="UTF-8">
+  <title>Generated</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+<div class="h-screen flex flex-col justify-center items-center bg-gradient-to-b from-gray-800 to-gray-600">
+    <h1 class="text-white text-4xl font-bold">GénérAItor</h1>
+    <div class="max-w-xl bg-white rounded-lg p-8 mt-8">
+        <p class="text-gray-700">Cette application vous permet en une simple description de générer des composants ou même une page HTML utilisant tailwind. Essayez donc, entrez juste votre demande dans la zone si dessous, une fois votre demande exaucée vous pourrez copier le code dans votre presse papier</p>
+    </div>
+</div>
+</body>
+`
 
+// Variable et listerner servants à enregistrer le code généré pour le copier dans le presse papier
+let value = ""
 copyBtn.addEventListener("click", (e) => {
   e.preventDefault()
   navigator.clipboard.writeText(value)
@@ -11,6 +28,7 @@ copyBtn.addEventListener("click", (e) => {
   alert("Copié dans le presse papier")
 })
 
+// Gestion du formulaire, appel à l'api, modification de la réponse en string et appel à la mise à jour de l'affichage
 form.addEventListener("submit", async (e) => {
     e.preventDefault();
     updateIfame(`
@@ -38,7 +56,7 @@ form.addEventListener("submit", async (e) => {
     value = data
     updateIfame(data)
     copyBtn.classList.remove("hidden")
-    })
+  })
 
 const updateIfame = (code: string) => {
   generated.srcdoc = `
