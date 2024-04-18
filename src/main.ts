@@ -15,7 +15,7 @@ generated.srcdoc = `
 <div class="h-screen flex flex-col justify-center items-center bg-gradient-to-b from-gray-800 to-gray-600">
     <h1 class="text-white text-4xl font-bold">GénérAItor</h1>
     <div class="max-w-xl bg-white rounded-lg p-8 mt-8">
-        <p class="text-gray-700">Cette application vous permet en une simple description de générer des composants ou même une page HTML utilisant tailwind. Essayez donc, entrez juste votre demande dans la zone si dessous, une fois votre demande exaucée vous pourrez copier le code dans votre presse papier</p>
+        <p class="text-gray-700">Cette application vous permet en une simple description de générer des composants ou même une page HTML utilisant tailwind. Essayez donc, entrez juste votre demande dans la zone si dessous, une fois votre demande exaucée vous pourrez copier le code dans votre presse papier ou l'afficher dans une modale</p>
     </div>
 </div>
 </body>
