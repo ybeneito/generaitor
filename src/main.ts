@@ -1,6 +1,8 @@
 const form = document.querySelector("#generate-form") as HTMLFormElement;
 const generated = document.querySelector("#generated") as HTMLIFrameElement;
 const copyBtn = document.querySelector("#copy-btn") as HTMLButtonElement;
+const displayBtn = document.querySelector("#display-btn") as HTMLButtonElement;
+import Swal from 'sweetalert2'
 
 // Affichage de base afin de rester sur une unique page, celui ci est inseré dans l'Iframe
 generated.srcdoc = `
@@ -27,6 +29,19 @@ copyBtn.addEventListener("click", (e) => {
   copyBtn.classList.add("hidden")
   alert("Copié dans le presse papier")
 })
+
+// Bouton appelant l'affichage du code dans une modale
+displayBtn.addEventListener("click", (e) => {
+  e.preventDefault()
+  Swal.fire({
+    title: 'Code généré',
+    text: value,
+    showCloseButton: true,
+    showCancelButton: false,
+    focusConfirm: false,
+  })
+})
+
 
 // Gestion du formulaire, appel à l'api, modification de la réponse en string et appel à la mise à jour de l'affichage
 form.addEventListener("submit", async (e) => {
@@ -56,6 +71,7 @@ form.addEventListener("submit", async (e) => {
     value = data
     updateIfame(data)
     copyBtn.classList.remove("hidden")
+    displayBtn.classList.remove("hidden")
   })
 
 const updateIfame = (code: string) => {
